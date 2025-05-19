@@ -78,3 +78,114 @@ python analizador_correos.py
 ```
 
 ---
+### Base de datos
+
+Las alertas se almacenan en `alertas.db` con la siguiente estructura:
+
+```sql
+CREATE TABLE alertas (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    fecha TEXT,
+    contenido TEXT
+);
+```
+
+---
+
+## Anexo: Guía paso a paso
+
+### Cómo usar GPG
+
+#### 1. Generar tus claves
+
+```bash
+gpg --full-generate-key
+```
+
+Elegí:
+
+- Tipo: `1` (RSA)
+- Tamaño: `4096`
+- Sin expiración (poner `0`)
+- Nombre y correo reales o de prueba
+
+#### 2. Exportar tu clave pública (para compartir)
+
+```bash
+gpg --armor --export alias@alias.com > public.key
+```
+
+#### 3. Importar clave pública de otro (opcional)
+
+```bash
+gpg --import public.key
+```
+
+#### 4. Ver tus claves:
+
+```bash
+gpg --list-keys
+```
+
+---
+
+### Cómo descifrar y verificar archivos
+
+#### Ver el contenido de `alertas.txt.gpg`:
+
+```bash
+gpg --decrypt alertas.txt.gpg
+```
+
+#### Verificar la firma digital:
+
+```bash
+gpg --verify alertas.txt.sig alertas.txt
+```
+
+---
+
+### Cómo configurar variables de entorno
+
+#### 🪟 En PowerShell (Windows):
+
+```powershell
+$env:WEBHOOK_TOKEN = "As3ReJ3@[ha/"
+$env:GPG_RECIPIENT = "marisa@pardo.com"
+$env:GPG_SIGNER = "marisa@pardo.com"
+```
+
+> Estas variables estarán disponibles mientras no se cierre la consola.
+
+#### En Linux/Mac (temporal):
+
+```bash
+export WEBHOOK_TOKEN="As3ReJ3@[ha/"
+export GPG_RECIPIENT="marisa@pardo.com"
+export GPG_SIGNER="marisa@pardo.com"
+```
+
+---
+
+### Alternativa: usar `.env` automáticamente
+
+1. Instalar python-dotenv:
+
+```bash
+pip install python-dotenv
+```
+
+2. Crear archivo `.env` con:
+
+```env
+WEBHOOK_TOKEN=As3ReJ3@[ha/
+GPG_RECIPIENT=marisa@pardo.com
+GPG_SIGNER=marisa@pardo.com
+```
+
+3. Agregar en tus scripts:
+
+```python
+from dotenv import load_dotenv
+load_dotenv()
+```
