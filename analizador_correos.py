@@ -28,7 +28,7 @@ archivo_firma = "alertas.txt.sig"
 gpg_recipient = os.environ.get("GPG_RECIPIENT", "alias@alias.com")
 gpg_signer = os.environ.get("GPG_SIGNER", "alias@alias.com")
 
-#Analisis real
+#Analisis
 alertas_generadas = []
 
 for fichero in glob.glob("*.json"):
