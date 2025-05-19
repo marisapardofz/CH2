@@ -151,8 +151,8 @@ gpg --verify alertas.txt.sig alertas.txt
 
 ```powershell
 $env:WEBHOOK_TOKEN = "As3ReJ3@[ha/"
-$env:GPG_RECIPIENT = "marisa@pardo.com"
-$env:GPG_SIGNER = "marisa@pardo.com"
+$env:GPG_RECIPIENT = "alias@alias.com"
+$env:GPG_SIGNER = "alias@alias.com"
 ```
 
 > Estas variables estarán disponibles mientras no se cierre la consola.
@@ -161,8 +161,8 @@ $env:GPG_SIGNER = "marisa@pardo.com"
 
 ```bash
 export WEBHOOK_TOKEN="As3ReJ3@[ha/"
-export GPG_RECIPIENT="marisa@pardo.com"
-export GPG_SIGNER="marisa@pardo.com"
+export GPG_RECIPIENT="alias@alias.com"
+export GPG_SIGNER="alias@alias.com"
 ```
 
 ---
@@ -179,8 +179,8 @@ pip install python-dotenv
 
 ```env
 WEBHOOK_TOKEN=As3ReJ3@[ha/
-GPG_RECIPIENT=marisa@pardo.com
-GPG_SIGNER=marisa@pardo.com
+GPG_RECIPIENT=alias@alias.com
+GPG_SIGNER=alias@alias.com
 ```
 
 3. Agregar en tus scripts:
