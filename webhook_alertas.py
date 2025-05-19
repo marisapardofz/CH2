@@ -1,4 +1,3 @@
-#Token de seguridad
 import os
 from flask import Flask, request, jsonify
 import logging
@@ -30,7 +29,7 @@ app = Flask(__name__)
 limiter = Limiter(
     get_remote_address,
     app=app,
-    default_limits=["10 per minute"]  # Limita a 10 requests por minuto por IP
+    default_limits=["10 per minute"]
 )
 
 SECRET_TOKEN = os.environ.get("WEBHOOK_TOKEN") #Setear antes de ejecutar
