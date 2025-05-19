@@ -1,0 +1,8 @@
+{
+  "from": "desconocido@otrodominio.com",
+  "subject": "Oferta urgente",
+  "body": "La contraseña de acceso está en el adjunto. No lo compartas.",
+  "attachments": [
+    "setup.exe"
+  ]
+}

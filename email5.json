@@ -1,0 +1,9 @@
+{
+  "from": "h3h3@phishing.com",
+  "subject": "Confidencial: acceso remoto",
+  "body": "Instala el script para tener acceso. Usa la contraseña 'admin'.",
+  "attachments": [
+    "remote.bat",
+    "notes.txt"
+  ]
+}

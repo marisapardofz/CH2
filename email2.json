@@ -1,0 +1,8 @@
+{
+  "from": "interno@empresa.com",
+  "subject": "Reunión semanal",
+  "body": "Estimados, nos vemos en la reunión semanal. Adjuntos los minutos de la reunión.",
+  "attachments": [
+    "minuta.docx"
+  ]
+}

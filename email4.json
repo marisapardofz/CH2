@@ -1,0 +1,6 @@
+{
+  "from": "hr@empresa.com",
+  "subject": "Aviso importante",
+  "body": "Información interna. No es confidencial.",
+  "attachments": []
+}

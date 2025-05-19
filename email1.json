@@ -1,0 +1,9 @@
+{
+  "from": "externo@dominioexterno.com",
+  "subject": "Confidencial: Reporte Q1",
+  "body": "Hola equipo, adjunto el reporte confidencial del Q1. La contraseña del archivo es 1234.",
+  "attachments": [
+    "reporte_Q1.zip",
+    "script.js"
+  ]
+}
