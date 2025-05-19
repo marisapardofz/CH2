@@ -1,4 +1,4 @@
-# utf-8
+#utf-8
 
 import os
 import glob
@@ -10,7 +10,7 @@ import mimetypes
 import hashlib
 import re
 
-# Logging estructurado
+#Logging estructurado
 logging.basicConfig(
     filename="log_analisis.log",
     level=logging.INFO,
@@ -18,7 +18,7 @@ logging.basicConfig(
     datefmt="%Y-%m-%d %H:%M:%S"
 )
 
-# Parámetros
+#Parametros
 palabras_sensibles = ["confidencial", "contraseña"]
 dominios_confiables = ["empresa.com", "google.com"]
 extensiones_peligrosas = [".zip", ".exe", ".bat", ".js"]
@@ -28,7 +28,7 @@ archivo_firma = "alertas.txt.sig"
 gpg_recipient = os.environ.get("GPG_RECIPIENT", "alias@alias.com")
 gpg_signer = os.environ.get("GPG_SIGNER", "alias@alias.com")
 
-# Análisis real
+#Analisis real
 alertas_generadas = []
 
 for fichero in glob.glob("*.json"):
@@ -51,16 +51,16 @@ for fichero in glob.glob("*.json"):
 
     hallazgos = []
 
-    # Detectar palabras sensibles
+    #Detectar palabras sensibles
     for palabra in palabras_sensibles:
         if palabra in asunto or palabra in cuerpo:
             hallazgos.append(f"Palabra sensible detectada: '{palabra}'")
 
-    # Regex de posibles credenciales
+    #Regex de posibles credenciales
     if re.search(r"(usuario|user|login|clave|password)\s*[:=]\s*\S+", cuerpo, re.IGNORECASE):
         hallazgos.append("Posible cadena de credenciales detectada en el cuerpo del correo")
 
-    # Adjuntos peligrosos
+    #Adjuntos peligrosos
     for adj in adjuntos:
         nombre_adj = adj.lower()
         tipo_mime, _ = mimetypes.guess_type(nombre_adj)
@@ -80,7 +80,7 @@ for fichero in glob.glob("*.json"):
             info_alerta += f"    * {h}\n"
         alertas_generadas.append(info_alerta)
 
-# Si hay alertas...
+#Si hay alertas
 if alertas_generadas:
     try:
         with open(archivo_alertas, "w", encoding="utf-8") as f:
@@ -111,14 +111,14 @@ if alertas_generadas:
             "--detach-sign", "--local-user", gpg_signer,
             archivo_alertas
         ], check=True)
-        print(f"🖋️ Archivo firmado como {archivo_firma}")
+        print(f"Archivo firmado como {archivo_firma}")
         if os.path.exists(archivo_alertas_cifrado) and os.path.exists(archivo_firma):
             os.remove(archivo_alertas)
-            print("🧹 Archivo alertas.txt eliminado tras cifrado y firma")
+            print("Archivo alertas.txt eliminado tras cifrado y firma")
     except subprocess.CalledProcessError as e:
         print(f"Error firmando archivo: {e}")
 
-    #Envío al webhook
+    #Webhook
     try:
         token = os.environ.get("WEBHOOK_TOKEN")
         if not token:
