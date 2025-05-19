@@ -1,7 +1,5 @@
 # CH2
 
-### Proyecto: Analizador de Correos Sensibles
-
 Este proyecto simula una aplicación de seguridad que analiza correos electrónicos (formato `.json`) y detecta posibles datos sensibles o peligrosos. Se aplica una arquitectura con varias capas de protección y validaciones, tanto en el cliente como en el servidor receptor (webhook).
 
 ---
